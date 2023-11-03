@@ -1,9 +1,20 @@
+# escribir un archivo de python que contiene diccionarios
+
+pokemons = [
+    {
+        "id": 1,
+        "hp": 23,
+        "attack": 50
+    },
+    {
+        "id": 2,
+        "hp": 30,
+        "attack": 30
+    }
+]
+
 person1 = ["coco", 10, "mexico"]
 
 
-with open('info.csv', 'w') as f:
-    for i in range(3):
-        current_info = str(person1[i])
-        f.write(current_info)
-        if i != 2:
-            f.write(",")
+with open('dicts.py', 'w') as f:
+    pass
