@@ -1,8 +1,7 @@
 import requests
 
 """ 
-Escribir la información de los primeros n pokemones en un archivo CSV
-Escribir: nombre, altura, peso, puntos de salud; stats
+Imprimir la información de los primeros n pokemones, como test
 el atributo "stats" de un pokemon es una lista
 en cada elemento de "stats" hay una clave llamada "base_stat" que te dice el stat de la cualidad en cuestión, 
 como salud, ataque, defensa, etc. 
@@ -10,7 +9,7 @@ El orden de los elementos es: hp, attack, defense
 """
 
 def main():
-	# este endpoint contiene una lista de 1200 pokemones
+	# este endpoint contiene una lista de los primeros 10 pokemones
 	url = 'https://pokeapi.co/api/v2/pokemon?limit=10'
 
 	try:
@@ -41,5 +40,5 @@ def main():
 	except requests.RequestException as e:
 		print(f"Error en la solicitud: {e}")
 
-# if __name__ == "__main__":
-# 	main()
+if __name__ == "__main__":
+	main()

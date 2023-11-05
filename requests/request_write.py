@@ -52,22 +52,22 @@ def get_data():
 Escribir la matriz obtenida en un archivo CSV
 Escribe cada elemento como una fila en el archivo
 """
-def write_csv(data):
+def write_csv(data) -> None:
 	with open('info.csv', 'w', newline="") as file:
-			# se crea un objeto escritor de archivos CSV que escribirá en 
-			# el archivo representado por file, que es "info.csv"
-			writer = csv.writer(file)
+		# se crea un objeto escritor de archivos CSV que escribirá en 
+		# el archivo representado por file, que es "info.csv"
+		writer = csv.writer(file)
 
-			headers = ["name", "id", "hp", "attack", "defense", "special-attack", "special-defense", "speed"]
-			writer.writerow(headers)
+		headers = ["name", "id", "hp", "attack", "defense", "special-attack", "special-defense", "speed"]
+		writer.writerow(headers)
 
-			# se itera a través de cada elemento de data
-			for fila in data:
-				writer.writerow(fila)
+		# se itera a través de cada elemento de data
+		for fila in data:
+			writer.writerow(fila)
 
-# def main():
-# 	pokemons_data = get_data()
-# 	write_csv(pokemons_data)
+def main():
+	pokemons_data = get_data()
+	write_csv(pokemons_data)
 
-# if __name__ == "__main__":
-# 	main()
+if __name__ == "__main__":
+	main()
