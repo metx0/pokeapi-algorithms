@@ -1,4 +1,5 @@
-from busqueda import busqueda_nombre, busqueda_id
+from busqueda import busqueda_nombre, busqueda_id, crear_lista
+from opciones_ordenamiento import opciones_ordenamiento
 
 """ 
 El usuario tiene la opción de ordenar los pokemones o de buscar entre ellos, en base a nombre o ID
@@ -7,8 +8,8 @@ Puede ordenarlo en base a su nombre o a sus stats
 
 def imprimir_opciones() -> None:
     print("\n¡Ordenamiento y búsqueda de Pokemons! ¿Qué desea hacer?")
-    print("1 - Ordenar Pokemons en base a una estadística")
-    print("2 - Buscar un Pokemon para ver sus estadísticas")
+    print("1 - Ordenar Pokemones")
+    print("2 - Buscar un Pokemon")
     print("3 - Salir\n")
 
 def busqueda(opcion: str):
@@ -22,7 +23,8 @@ def busqueda(opcion: str):
                 else:
                     print("El nombre debe ser una cadena")
 
-            busqueda_nombre(nombre)
+            lista = crear_lista()
+            busqueda_nombre(lista, nombre)
         case "id":
             # Comprobar que es un entero y que está en el rango de 1-1000
             while True:
@@ -46,8 +48,8 @@ def main():
 
         match opcion:
             case '1':
-                pass
-                # Imprimir opciones de ordenamiento
+                opciones_ordenamiento()
+                
             case '2':
                 opcion_busqueda = input("¿Quiere buscarlos en base a su nombre o en base a su ID? (nombre/id): ").lower()
 
