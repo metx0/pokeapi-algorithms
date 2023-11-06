@@ -1,18 +1,28 @@
 import csv
 import ordenamiento
 
+def imprimir_opciones():
+    pass
+
 file = open('info.csv', 'r')
 csv_reader = csv.reader(file, delimiter=',')
 pokemon_list = list(csv_reader)
 file.close()
 
+with open('info.csv', 'r') as file:
+        csv_reader = csv.reader(file, delimiter=',')
+        lista_pokemon = list(csv_reader)[1:]
+
 list_to_sort = pokemon_list[1:]
 
 def opciones_ordenamiento():
     print("¿Quieres ordenar los Pokemones en base al nombre o las estadísticas?\n")
-    print("Opción 1 - En base al nombre")
-    print("Opción 2 - En base a las estadísticas\n")
+    print("1 - En base al nombre")
+    print("2 - En base a las estadísticas\n")
     opcion = int(input("Digita tu elección: "))
+
+    # TODO
+
     print()
 
     if opcion == 1:
@@ -31,13 +41,13 @@ def opciones_ordenamiento():
         else:
             print("~Opción inválida~")
     elif opcion == 2:
-        # print("Opción 1 - Ordenar Pokemones por su ID")
         print("Opción 1 - Ordenar Pokemones por su HP")
         print("Opción 2 - Ordenar Pokemones por su ataque")
         print("Opción 3 - Ordenar Pokemones por su defensa")
         print("Opción 4 - Ordenar Pokemones por su ataque especial")
         print("Opción 5 - Ordenar Pokemones por su defensa especial")
         print("Opción 6 - Ordenar Pokemones por su velocidad\n")
+
         opcion_stats = int(input("Digita tu elección: "))
         print()
 

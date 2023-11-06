@@ -1,4 +1,4 @@
-from busqueda import busqueda_nombre, busqueda_id, crear_lista
+from busqueda import busqueda_nombre, busqueda_id
 from opciones_ordenamiento import opciones_ordenamiento
 
 """ 
@@ -23,8 +23,7 @@ def busqueda(opcion: str):
                 else:
                     print("El nombre debe ser una cadena")
 
-            lista = crear_lista()
-            busqueda_nombre(lista, nombre)
+            busqueda_nombre(nombre)
         case "id":
             # Comprobar que es un entero y que está en el rango de 1-1000
             while True:
@@ -49,7 +48,6 @@ def main():
         match opcion:
             case '1':
                 opciones_ordenamiento()
-                
             case '2':
                 opcion_busqueda = input("¿Quiere buscarlos en base a su nombre o en base a su ID? (nombre/id): ").lower()
 

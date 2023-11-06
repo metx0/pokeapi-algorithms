@@ -1,3 +1,8 @@
+""" 
+Este módulo define el algoritmo de ordenamiento quick sort, para ordenar la lista en base
+a distintos parámetros
+"""
+
 # Ordenar la lista en base a un subíndice, de manera ascendente
 def quick_sort_ascendelly(this_list, low, high, subindex):
     if low >= high: return
