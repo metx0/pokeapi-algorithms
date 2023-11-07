@@ -2,13 +2,15 @@ import csv
 from ordenamiento import quick_sort_ascendelly
 
 """ 
-Se definen funciones para buscar un pokemon por su nombre o su ID
+Modulo donde se definen funciones para buscar un pokemon por su nombre o su ID,
+e imprimir los resultados
 """
 
-ENCABEZADOS = ["Nombre", "ID", "Puntos de salud", "Ataque", "Defensa", "Ataque especial", "Defensa especial", "Velocidad"]
+ENCABEZADOS = ["Nombre", "ID", "Tipo primario", "Tipo secundario", "Puntos de salud", "Ataque", "Defensa", "Ataque especial", "Defensa especial", "Velocidad"]
 
 # Buscar un pokemon por nombre, con binary search, en la lista de pokemones
-def busqueda_nombre(pokemon_a_encontrar):
+def busqueda_nombre(pokemon_a_encontrar) -> None:
+    # Se crea la lista en donde se buscará el pokemon
     with open('info.csv', 'r') as file:
         csv_reader = csv.reader(file, delimiter=',')
         lista_pokemon = list(csv_reader)[1:]
@@ -22,13 +24,19 @@ def busqueda_nombre(pokemon_a_encontrar):
     high = 999
 
     while low <= high:
-        mid_position = int((low + high) / 2)
+        mid_position = (low + high) // 2
+        # mid_position = int((low + high) / 2)
         mid_pokemon = lista_pokemon[mid_position][0]
 
         if pokemon_a_encontrar == mid_pokemon:
             # El elemento de la lista que corresponde al pokemon a encontrar
             pokemon_info = lista_pokemon[mid_position]
-            for i in range(8):
+
+            for i in range(10):
+                # Si no tiene tipo secundario, saltamos la iteración
+                if i == 3 and pokemon_info[3] == "None":
+                    continue
+
                 print(f'{ENCABEZADOS[i]}: {pokemon_info[i]}')
             return
         elif pokemon_a_encontrar < mid_pokemon:
@@ -45,5 +53,8 @@ def busqueda_id(id: int):
         info_list = list(csv.reader(file))
         pokemon_info = info_list[id]
 
-        for i in range(8):
+        for i in range(10):
+            if i == 3 and pokemon_info[3] == "None":
+                continue
+            
             print(f"{ENCABEZADOS[i]}: {pokemon_info[i]}")
