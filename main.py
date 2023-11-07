@@ -1,18 +1,13 @@
-from busqueda import busqueda_nombre, busqueda_id, crear_lista
+from busqueda import busqueda_nombre, busqueda_id
 from opciones_ordenamiento import opciones_ordenamiento
 
 """ 
 El usuario tiene la opción de ordenar los pokemones o de buscar entre ellos, en base a nombre o ID
-Puede ordenarlo en base a su nombre o a sus stats
-"""
+Puede ordenarlo en base a sus stats
+"""    
 
-def imprimir_opciones() -> None:
-    print("\n¡Ordenamiento y búsqueda de Pokemons! ¿Qué desea hacer?")
-    print("1 - Ordenar Pokemones")
-    print("2 - Buscar un Pokemon")
-    print("3 - Salir\n")
-
-def busqueda(opcion: str):
+# Imprimir y manejas las distintas opciones de búsqueda
+def opciones_busqueda(opcion: str) -> None:
     match opcion:
         case "nombre":
             # Comprobar que es una cadena alfanumérica
@@ -23,8 +18,7 @@ def busqueda(opcion: str):
                 else:
                     print("El nombre debe ser una cadena")
 
-            lista = crear_lista()
-            busqueda_nombre(lista, nombre)
+            busqueda_nombre(nombre)
         case "id":
             # Comprobar que es un entero y que está en el rango de 1-1000
             while True:
@@ -43,20 +37,23 @@ def busqueda(opcion: str):
 
 def main():
     while True:
-        imprimir_opciones()
+        print("\n¡Ordenamiento y búsqueda de Pokemons! ¿Qué desea hacer?")
+        print("1 - Ordenar Pokemones")
+        print("2 - Buscar un Pokemon")
+        print("3 - Salir\n")
+
         opcion = input("Digita tu elección: ")
 
         match opcion:
             case '1':
                 opciones_ordenamiento()
-                
             case '2':
                 opcion_busqueda = input("¿Quiere buscarlos en base a su nombre o en base a su ID? (nombre/id): ").lower()
 
-                while opcion_busqueda not in ("nombre, id"):
+                while opcion_busqueda not in ("nombre", "id"):
                     opcion_busqueda = input("Opción no permitida. Ingrésela de nuevo: ")
                 
-                busqueda(opcion_busqueda)
+                opciones_busqueda(opcion_busqueda)
             case '3':
                 # salir
                 break

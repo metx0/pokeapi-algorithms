@@ -2,12 +2,12 @@ import requests
 import csv
 
 """ 
-Consultar la API para obtener la información de n pokemones y guardar la información de cada pokemon
-en una lista. La lista final es una matriz donde cada fila es una lista que contiene la información de 
-un pokemon
+Consultar la API para obtener la información de 1000 pokemones y guardar la información de cada pokemon
+en una lista. 
+Devuelve una matriz donde cada fila es una lista que contiene la información de un pokemon
 """
-def get_data():
-	# este endpoint devuelve una lista de 1200 pokemones
+def get_data() -> list:
+	# este endpoint devuelve una lista de 1000 pokemones
 	url = 'https://pokeapi.co/api/v2/pokemon?limit=1000'
 
 	try:
@@ -18,24 +18,36 @@ def get_data():
 		if response.status_code == 200:
 			json_response = response.json()
 
-			# una lista que contiene los resultados de los pokemones
+			# una lista donde cada elemento contiene el nombre y url de cada pokemon
 			pokemons = json_response["results"]
-
 			# aquí se guardará la información de todos los pokemones consultados
 			pokemons_data = []
 
 			for pokemon in pokemons:
 				# lista que contendrá la información del pokemon actual
 				current_pokemon = []
-
 				pokemon_url = pokemon["url"]
 
 				# hacemos una petición GET a la url del pokemon en cuestión y agarramos el JSON
 				data = requests.get(pokemon_url).json()
 				
+				# Añadimos el nombre y el id
 				current_pokemon.extend([data["name"], data["id"]])
 
-				# la clave "stats" es una lista
+				# Añadimos los tipos. types es una lista
+				types = data["types"]
+
+				# Si solo tiene un tipo
+				if len(types) == 1:
+					type_1 = types[0]["type"]["name"]
+					type_2 = "None"
+					current_pokemon.extend([type_1, type_2])
+				else: # Si tiene 2 tipos
+					for pokemon_type in types:
+						type_name = pokemon_type["type"]["name"]
+						current_pokemon.append(type_name)
+
+				# Añadimos los stats. la clave "stats" es una lista
 				stats = data["stats"]
 				for stat in stats:
 					current_pokemon.append(stat['base_stat']) 
@@ -58,10 +70,10 @@ def write_csv(data) -> None:
 		# el archivo representado por file, que es "info.csv"
 		writer = csv.writer(file)
 
-		headers = ["name", "id", "hp", "attack", "defense", "special-attack", "special-defense", "speed"]
+		headers = ["name", "id", "type1", "type2", "hp", "attack", "defense", "special-attack", "special-defense", "speed"]
 		writer.writerow(headers)
 
-		# se itera a través de cada elemento de data
+		# se escribe cada elemento de data
 		for fila in data:
 			writer.writerow(fila)
 
