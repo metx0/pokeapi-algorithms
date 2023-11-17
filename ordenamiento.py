@@ -61,13 +61,26 @@ def partition_descendelly(this_list, low, high, subindex):
 
     return i
 
+# secuencias de escape para imprimir con color en la terminal
+class colors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 def print_list(lista_pokemon, stat):
     for i in range(1000):
         pokemon = lista_pokemon[i]
 
         # imprimir el nombre, los tipos, id, y estadística
         # si no tiene tipo secundario, se imprime de forma diferente
+
         if pokemon[INDICE_TIPO_SECUNDARIO] != "None":
-            print(f"{pokemon[0]}, id: {pokemon[1]}, tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}, tipo secundario: {pokemon[INDICE_TIPO_SECUNDARIO]}, stat: {pokemon[stat]}")
+            print(f"{colors.HEADER}{pokemon[0]}{colors.ENDC}, {colors.OKBLUE}id: {pokemon[1]}{colors.ENDC}, {colors.OKCYAN}tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}{colors.ENDC}, {colors.OKGREEN}tipo secundario: {pokemon[INDICE_TIPO_SECUNDARIO]}{colors.ENDC}, {colors.WARNING}stat: {pokemon[stat]}{colors.ENDC}")
         else:
-            print(f"{pokemon[0]}, id: {pokemon[1]}, tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}, stat: {pokemon[stat]}")
+            print(f"{colors.HEADER}{pokemon[0]}{colors.ENDC}, {colors.OKBLUE}id: {pokemon[1]}{colors.ENDC}, {colors.OKCYAN}tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}{colors.ENDC}, {colors.WARNING}stat: {pokemon[stat]}{colors.ENDC}")
