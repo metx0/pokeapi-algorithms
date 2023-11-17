@@ -6,6 +6,13 @@ Módulo donde se imprimen y manejan las distintas opciones de ordenamiento
 Se permite ordenar según las estadísticas
 """
 
+INDICE_SALUD = 4
+INDICE_ATAQUE = 5
+INDICE_DEFENSA = 6
+INDICE_ATAQUE_ESPECIAL = 7
+INDICE_DEFENSA_ESPECIAL = 8
+INDICE_VELOCIDAD = 9
+
 # Validar las opciones de ordenamiento ascendente o descendente
 # Siempre se valida si la entrada es 1 o 2; se puede modelar como función
 def validar() -> int:
@@ -54,15 +61,13 @@ def opciones_ordenamiento():
             opcion_orden = validar()
 
             # De forma ascendente
-            if opcion_orden == 1: pass
-                # list_to_sort = pokemon_list[1:]
-                # ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 2)
-                # ordenamiento.print_list(list_to_sort)
-            else: pass
+            if opcion_orden == 1:
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_SALUD)
+                ordenamiento.print_list(lista_pokemon, INDICE_SALUD)
+            else: 
                 # Ordenar de forma descendente
-                # list_to_sort = pokemon_list[1:]
-                # ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 2)
-                # ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_SALUD)
+                ordenamiento.print_list(lista_pokemon, INDICE_SALUD)
                 
         # Ordenando por ataque
         case 2:
@@ -71,68 +76,48 @@ def opciones_ordenamiento():
             if opcion_orden == 1:
                 # la lista a ordenar se declara al inicio; solo falta pasarla de parámetro. 
                 # len(lista_pokemon) - 1 es 999
-                list_to_sort = lista_pokemon
-                ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 3)
-                ordenamiento.print_list(list_to_sort)
-            elif opcion_orden == 2:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 3)
-                ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_ATAQUE)
+                ordenamiento.print_list(lista_pokemon, INDICE_ATAQUE)
             else:
-                print("~Opción inválida~")
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_ATAQUE)
+                ordenamiento.print_list(lista_pokemon, INDICE_ATAQUE)
         # Ordenando por defensa
         case 3:
             opcion_orden = validar()
             
             if opcion_orden == 1:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 4)
-                ordenamiento.print_list(list_to_sort)
-            elif opcion_orden == 2:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 4)
-                ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_DEFENSA)
+                ordenamiento.print_list(lista_pokemon, INDICE_DEFENSA)
             else:
-                print("~Opción inválida~")
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_DEFENSA)
+                ordenamiento.print_list(lista_pokemon, INDICE_DEFENSA)
         # Ordenando por ataque especial
         case 4:
             opcion_orden = validar()
 
             if opcion_orden == 1:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 5)
-                ordenamiento.print_list(list_to_sort)
-            elif opcion_orden == 2:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 5)
-                ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_ATAQUE_ESPECIAL)
+                ordenamiento.print_list(lista_pokemon, INDICE_ATAQUE_ESPECIAL)
             else:
-                print("~Opción inválida~")
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_ATAQUE_ESPECIAL)
+                ordenamiento.print_list(lista_pokemon, INDICE_ATAQUE_ESPECIAL)
         # Ordenando por defensa especial
         case 5:
             opcion_orden = validar()
             
             if opcion_orden == 1:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 6)
-                ordenamiento.print_list(list_to_sort)
-            elif opcion_orden == 2:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 6)
-                ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_DEFENSA_ESPECIAL)
+                ordenamiento.print_list(lista_pokemon, INDICE_DEFENSA_ESPECIAL)
             else:
-                print("~Opción inválida~")
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_DEFENSA_ESPECIAL)
+                ordenamiento.print_list(lista_pokemon, INDICE_DEFENSA_ESPECIAL)
         # Ordenando por velocidad
         case 6:
             opcion_orden = validar()
             
             if opcion_orden == 1:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_ascendelly(list_to_sort, 0, len(list_to_sort) - 1, 7)
-                ordenamiento.print_list(list_to_sort)
-            elif opcion_orden == 2:
-                list_to_sort = pokemon_list[1:]
-                ordenamiento.quick_sort_descendelly(list_to_sort, 0, len(list_to_sort) - 1, 7)
-                ordenamiento.print_list(list_to_sort)
+                ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_VELOCIDAD)
+                ordenamiento.print_list(lista_pokemon, INDICE_VELOCIDAD)
             else:
-                print("~Opción inválida~")
+                ordenamiento.quick_sort_descendelly(lista_pokemon, 0, 999, INDICE_VELOCIDAD)
+                ordenamiento.print_list(lista_pokemon, INDICE_VELOCIDAD)

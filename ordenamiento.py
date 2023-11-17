@@ -3,6 +3,9 @@ Este módulo define el algoritmo de ordenamiento quick sort, para ordenar la lis
 a distintos parámetros
 """
 
+INDICE_TIPO_PRIMARIO = 2
+INDICE_TIPO_SECUNDARIO = 3
+
 # Ordenar la lista en base a un subíndice, de manera ascendente
 def quick_sort_ascendelly(this_list, low, high, subindex):
     if low >= high: return
@@ -58,7 +61,13 @@ def partition_descendelly(this_list, low, high, subindex):
 
     return i
 
-def print_list(this_list):
-    print("['name','id','hp','attack','defense','special-attack','special-defense','speed']")
-    for i in range(len(this_list)):
-        print(this_list[i])
+def print_list(lista_pokemon, stat):
+    for i in range(1000):
+        pokemon = lista_pokemon[i]
+
+        # imprimir el nombre, los tipos, id, y estadística
+        # si no tiene tipo secundario, se imprime de forma diferente
+        if pokemon[INDICE_TIPO_SECUNDARIO] != "None":
+            print(f"{pokemon[0]}, id: {pokemon[1]}, tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}, tipo secundario: {pokemon[INDICE_TIPO_SECUNDARIO]}, stat: {pokemon[stat]}")
+        else:
+            print(f"{pokemon[0]}, id: {pokemon[1]}, tipo primario: {pokemon[INDICE_TIPO_PRIMARIO]}, stat: {pokemon[stat]}")
