@@ -74,8 +74,6 @@ def opciones_ordenamiento():
             opcion_orden = validar()
 
             if opcion_orden == 1:
-                # la lista a ordenar se declara al inicio; solo falta pasarla de parámetro. 
-                # len(lista_pokemon) - 1 es 999
                 ordenamiento.quick_sort_ascendelly(lista_pokemon, 0, 999, INDICE_ATAQUE)
                 ordenamiento.print_list(lista_pokemon, INDICE_ATAQUE)
             else:
